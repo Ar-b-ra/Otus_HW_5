@@ -18,7 +18,7 @@ class BaseSort:
                        ) -> list | None:
         if (file_to_read := Path(input_file_path)).exists:
             with open(file_to_read) as file:
-                self.sorted_list = [int(x) for x in file.read().split()]
+                self.sorted_list = self.sort([int(x) for x in file.read().split()])
                 return self.sorted_list
         else:
             root_logger.exception(f"File {file_to_read} not found")
