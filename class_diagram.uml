@@ -1,0 +1,28 @@
+@startuml
+class BaseSort {
+    # {static} sort_type = ""
+    + {abstract} sort(list_to_sort: list) -> list
+    #  sort_from_file(input_file_path: str | Path = "input.txt",
+                       ) -> Optional[list]
+    # write_to_file(file_path: Union[str, Path] = "output.txt") -> None
+}
+
+class MergeSort extends BaseSort{
+    # {static} sort_type = "merge"
+    + sort(list_to_sort: list) -> list
+}
+
+class SelectionSort extends BaseSort{
+    # {static} sort_type = "selection"
+    + sort(list_to_sort: list) -> list
+}
+
+class InsertionSort extends BaseSort{
+    # {static} sort_type = "insertion"
+    + sort(list_to_sort: list) --> list
+}
+
+class SortingMethodChooser{
+    + {static} get_sorter(sorting_method: str) --> BaseSort
+}
+@enduml
