@@ -30,14 +30,14 @@ class TestSortFromFile(unittest.TestCase):
         os.remove(self.output_file_path)
 
     def test_sort_from_file_existing_file(self):
-        for method in ["merge", "selection", "insertion"]:
+        for method in SortingMethodChooser.sorting_methods:
             my_class = SortingMethodChooser.get_sorter(method)()
             my_class.sort_from_file(self.input_file_path)
             self.assertEqual(my_class.sorted_list, self.expecting_list)
 
     def test_write_to_file_sorted_list(self):
 
-        for method in ["merge", "selection", "insertion"]:
+        for method in SortingMethodChooser.sorting_methods:
             my_class = SortingMethodChooser.get_sorter(method)()
             my_class.sort_from_file(self.input_file_path)
             my_class.write_to_file(self.output_file_path)
@@ -47,7 +47,7 @@ class TestSortFromFile(unittest.TestCase):
                 self.assertEqual(json.load(json_file), expected_text)
 
     def test_incorrect_input_path(self):
-        for method in ["merge", "selection", "insertion"]:
+        for method in SortingMethodChooser.sorting_methods:
             my_class = SortingMethodChooser.get_sorter(method)()
             with self.assertRaises(FileNotFoundError):
                 my_class.sort_from_file("incorrect_path")

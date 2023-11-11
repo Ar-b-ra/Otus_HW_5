@@ -1,7 +1,7 @@
 import json
 from abc import abstractmethod
 from pathlib import Path
-from typing import Union
+from typing import Union, Optional
 
 from utility.custom_logger import root_logger
 from utility.sorting import merge_sort, selection_sort, insertion_sort
@@ -15,7 +15,7 @@ class BaseSort:
         self.sorted_list = []
 
     def sort_from_file(self, input_file_path: Union[str, Path] = "input.txt",
-                       ) -> list | None:
+                       ) -> Optional[list]:
         if (file_to_read := Path(input_file_path)).exists:
             with open(file_to_read) as file:
                 self.sorted_list = self.sort([int(x) for x in file.read().split()])
@@ -65,16 +65,16 @@ class InsertionSort(BaseSort):
 
 
 class SortingMethodChooser:
+    sorting_methods = {
+        "merge": MergeSort,
+        "selection": SelectionSort,
+        "insertion": InsertionSort
+    }
 
     @classmethod
     def get_sorter(cls, sorting_method: str) -> type[BaseSort]:
-        sorting_methods = {
-            "merge": MergeSort,
-            "selection": SelectionSort,
-            "insertion": InsertionSort
-        }
 
-        if sorting_method in sorting_methods:
-            return sorting_methods[sorting_method]
+        if sorting_method in cls.sorting_methods:
+            return cls.sorting_methods[sorting_method]
         else:
             raise ValueError(f"Unknown sorting method: {sorting_method}")
