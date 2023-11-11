@@ -1,1 +1,1 @@
-[![codecov](https://codecov.io/gh/Ar-b-ra/Otus_HW_4/branch/master/graph/badge.svg)](https://codecov.io/gh/Ar-b-ra/Otus_HW_4)
+[![codecov](https://codecov.io/gh/Ar-b-ra/Otus_HW_5/branch/master/graph/badge.svg)](https://codecov.io/gh/Ar-b-ra/Otus_HW_5)
