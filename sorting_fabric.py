@@ -66,7 +66,7 @@ class InsertionSort(BaseSort):
 class SortingMethodChooser:
 
     @classmethod
-    def get_sorter(cls, sorting_method: str) -> BaseSort:
+    def get_sorter(cls, sorting_method: str) -> type[BaseSort]:
         sorting_methods = {
             "merge": MergeSort,
             "selection": SelectionSort,
