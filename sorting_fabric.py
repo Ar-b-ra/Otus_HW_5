@@ -1,6 +1,7 @@
 import json
 from abc import abstractmethod
 from pathlib import Path
+from typing import Union
 
 from utility.custom_logger import root_logger
 from utility.sorting import merge_sort, selection_sort, insertion_sort
@@ -13,7 +14,7 @@ class BaseSort:
     def __init__(self):
         self.sorted_list = []
 
-    def sort_from_file(self, input_file_path: str | Path = "input.txt",
+    def sort_from_file(self, input_file_path: Union[str, Path] = "input.txt",
                        ) -> list | None:
         if (file_to_read := Path(input_file_path)).exists:
             with open(file_to_read) as file:
@@ -27,7 +28,7 @@ class BaseSort:
     def sort(self, list_to_sort: list) -> list:
         return []
 
-    def write_to_file(self, file_path: str | Path = "output.txt") -> None:
+    def write_to_file(self, file_path: Union[str, Path] = "output.txt") -> None:
         with open(file_path, "w") as file:
             output_information = {
                 "sort_type": self.sort_type,
