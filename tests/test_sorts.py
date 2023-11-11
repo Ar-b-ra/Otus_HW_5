@@ -28,7 +28,7 @@ class SortingTestCase(unittest.TestCase):
         # Testing a list with already sorted elements
         arr = [1, 2, 3, 4, 5]
         self.assertEqual(selection_sort(arr), [1, 2, 3, 4, 5])
-        
+
     def test_merge_sort(self):
         # Testing an empty list
         arr = []
@@ -53,7 +53,7 @@ class SortingTestCase(unittest.TestCase):
         # Testing a list with already sorted elements
         arr = [1, 2, 3, 4, 5]
         self.assertEqual(merge_sort(arr), [1, 2, 3, 4, 5])
-        
+
     def test_insertion_sort(self):
         # Testing an empty list
         arr = []
